@@ -14,6 +14,11 @@ module.exports = {
       spacing: {
         screen80: '80vh',
       },
+      screens: {
+        xxsm2: '400px',
+        xxsm: '200px',
+        xsm: '600px',
+      },
     },
   },
   plugins: [],

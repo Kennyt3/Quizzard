@@ -34,10 +34,11 @@ function Questions() {
       setDex((dex) => dex - 1)
     }
   }
+
   return (
-    <div className='  items-center justify-center flex flex-col h-screen80 '>
+    <div className=' h-screen  max-w-xl mx-auto '>
       {!ready && (
-        <div>
+        <div className=' flex flex-col items-center justify-center h-full'>
           <h1 className='uppercase font-bold   text-thirSix  text-center'>
             Ready to take the test?
           </h1>
@@ -50,18 +51,21 @@ function Questions() {
         </div>
       )}
       {ready && (
-        <div>
+        <div className='h-full'>
           {quiz.length < 1 ? (
             <div>
               loading...
               <h1>{error}</h1>
             </div>
           ) : (
-            <form action=''>
-              <div className='mx-24'>
+            <form
+              action=''
+              className='flex flex-col h-full items-center justify-center '
+            >
+              <div className=' w-full'>
                 {dex < quiz.length ? (
-                  <fieldset className=' max-w-xl'>
-                    <noscript>
+                  <fieldset className='  w-full'>
+                    <noscript className=''>
                       {!quiz?.[dex]?.incorrectAnswers.includes(
                         quiz?.[dex]?.correctAnswer
                       ) &&
@@ -69,20 +73,24 @@ function Questions() {
                           quiz?.[dex]?.correctAnswer
                         )}
                     </noscript>
-                    <noscript>
+                    <noscript className=''>
                       {quiz?.[dex]?.incorrectAnswers.length === 4 &&
                         quiz?.[dex]?.incorrectAnswers.sort()}
                     </noscript>
 
                     {/* {console.log(quiz?.[dex]?.correctAnswer)}
                     {console.log(quiz?.[dex]?.incorrectAnswers)} */}
-
-                    <h1 className='font-bold text-center text-2xl mb-4'>
-                      <span className=' mr-3'>{dex + 1 + '.'}</span>
-                      {quiz?.[dex]?.question}
-                    </h1>
-                    <ul className='  ml-9'>
-                      {/* <li className=''>
+                    <div className='flex '>
+                      <span className='mr-3 font-bold text-center   text-2xl mb-4'>
+                        {dex + 1 + '.'}
+                      </span>
+                      <h1 className='font-bold    text-2xl mb-4'>
+                        {quiz?.[dex]?.question}
+                      </h1>
+                    </div>
+                    <div className='max-w-sm ml-10 '>
+                      <ul className=' items-center  ml-9'>
+                        {/* <li className=''>
                         <label htmlFor=''>
                           <input name={quiz?.[dex]?.id} id='' type='radio' />
                           <span className='font-medium text-center ml-4 capitalize text-lg'>
@@ -90,54 +98,59 @@ function Questions() {
                           </span>
                         </label>
                       </li> */}
-                      {quiz?.[dex]?.incorrectAnswers.map((item, index) => {
-                        return (
-                          <li key={index}>
-                            <label htmlFor=''>
-                              <input
-                                name={quiz?.[dex]?.id}
-                                id=''
-                                type='radio'
-                              />
-                              <span className='font-medium text-center ml-4 capitalize text-lg'>
-                                {item}
-                              </span>
-                            </label>
-                          </li>
-                        )
-                      })}
-                      {console.log(quiz?.[dex]?.correctAnswer)}
-                    </ul>
-                    <button
-                      type='button'
-                      className='bg-pr text-white font-bold text-xl uppercase mx-10 my-10 px-10 py-3 rounded-xl'
-                      onClick={getPrevQuestion}
-                    >
-                      Prev
-                    </button>
-                    <button
-                      type='button'
-                      className='bg-pr text-white font-bold text-xl uppercase mx-10 my-10 px-10 py-3 rounded-xl'
-                      onClick={getNextQuestion}
-                    >
-                      Next
-                    </button>
+                        {quiz?.[dex]?.incorrectAnswers.map((item, index) => {
+                          return (
+                            <li key={index}>
+                              <label htmlFor=''>
+                                <input
+                                  name={quiz?.[dex]?.id}
+                                  id=''
+                                  type='radio'
+                                />
+                                <span className='font-medium text-center ml-4 capitalize text-lg'>
+                                  {item}
+                                </span>
+                              </label>
+                            </li>
+                          )
+                        })}
+                        {console.log(quiz?.[dex]?.correctAnswer)}
+                      </ul>
+                    </div>
+                    <div className='flex xxsm:w-screen  justify-around   sm:w-full  mt-10'>
+                      <button
+                        type='button'
+                        className='bg-pr text-white font-bold text-xl uppercase xxsm:px-4 xxsm2:px-6 xsm:mx-6  xsm:px-10 py-3 rounded-xl'
+                        onClick={getPrevQuestion}
+                      >
+                        Prev
+                      </button>
+                      <button
+                        type='button'
+                        className='bg-pr text-white font-bold text-xl uppercase xxsm:px-4 xxsm2:px-6 xsm:mx-6   xsm:px-10 py-3 rounded-xl'
+                        onClick={getNextQuestion}
+                      >
+                        Next
+                      </button>
+                    </div>
                   </fieldset>
                 ) : (
                   <div>
                     <h1 className='uppercase font-bold text-thirSix  text-center'>
                       Ready to submit your answers?
                     </h1>
-                    <button
-                      type='button'
-                      className='bg-pr text-white font-bold text-xl uppercase mx-10 my-10 px-10 py-3 rounded-xl'
-                      onClick={getPrevQuestion}
-                    >
-                      Prev
-                    </button>
-                    <button className='bg-pr text-white font-bold text-xl uppercase mx-10 my-10 px-10 py-3 rounded-xl'>
-                      SUBMIT
-                    </button>
+                    <div className=' flex xxsm:w-screen  justify-around   sm:w-full  mt-10'>
+                      <button
+                        type='button'
+                        className='bg-pr text-white font-bold text-xl uppercase xxsm:px-4 xxsm2:px-6 xsm:mx-6  xsm:px-10 py-3 rounded-xl'
+                        onClick={getPrevQuestion}
+                      >
+                        Prev
+                      </button>
+                      <button className='bg-pr text-white font-bold text-xl uppercase xxsm:px-4 xxsm2:px-6 xsm:mx-6  xsm:px-10 py-3 rounded-xl'>
+                        SUBMIT
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

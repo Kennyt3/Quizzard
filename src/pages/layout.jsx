@@ -2,7 +2,7 @@ import Nav from '../components/nav'
 
 const Layout = () => {
   return (
-    <div>
+    <div className=''>
       <Nav />
     </div>
   )
