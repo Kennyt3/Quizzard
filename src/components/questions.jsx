@@ -61,12 +61,14 @@ function Questions() {
               <div className='mx-24'>
                 {dex < quiz.length ? (
                   <fieldset className=' max-w-xl'>
-                    {!quiz?.[dex]?.incorrectAnswers.includes(
-                      quiz?.[dex]?.correctAnswer
-                    ) &&
-                      quiz?.[dex]?.incorrectAnswers.push(
+                    <noscript>
+                      {!quiz?.[dex]?.incorrectAnswers.includes(
                         quiz?.[dex]?.correctAnswer
-                      )}
+                      ) &&
+                        quiz?.[dex]?.incorrectAnswers.push(
+                          quiz?.[dex]?.correctAnswer
+                        )}
+                    </noscript>
                     <noscript>
                       {quiz?.[dex]?.incorrectAnswers.length === 4 &&
                         quiz?.[dex]?.incorrectAnswers.sort()}
