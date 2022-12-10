@@ -1,21 +1,12 @@
-import {
-  // useEffect,
-
-  useState,
-} from 'react'
+import { useState } from 'react'
 
 function Questions() {
   const [quiz, setQuiz] = useState([])
-  // const [joke, setJoke] = useState([])
+
   const [ready, setReady] = useState(false)
   const [dex, setDex] = useState(0)
   const [error, setError] = useState('')
-  // useEffect(() => {
-  //   setJoke(quiz?.[dex]?.incorrectAnswers)
-
-  //   joke.push(quiz?.[dex]?.correctAnswer)
-  //   console.log(joke)
-  // }, [])
+  // const [checked, setChecked] = useState(false)
 
   const getQuestions = () => {
     setReady(true)
@@ -23,7 +14,6 @@ function Questions() {
       .then((res) => res.json())
       .then((data) => setQuiz(data))
       .catch((error) => setError(error))
-    // setJoke(quiz?.[dex]?.incorrectAnswers)
   }
 
   const getNextQuestion = () => {
@@ -33,6 +23,10 @@ function Questions() {
     if (dex > 0) {
       setDex((dex) => dex - 1)
     }
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
   }
 
   return (
@@ -61,10 +55,15 @@ function Questions() {
             <form
               action=''
               className='flex flex-col h-full items-center justify-center '
+              onSubmit={submitForm}
             >
               <div className=' w-full'>
                 {dex < quiz.length ? (
-                  <fieldset className='  w-full'>
+                  <div className='  w-full'>
+                    <noscript className=''>
+                      {quiz?.[dex]?.incorrectAnswers.length === 4 &&
+                        quiz?.[dex]?.incorrectAnswers.sort()}
+                    </noscript>
                     <noscript className=''>
                       {!quiz?.[dex]?.incorrectAnswers.includes(
                         quiz?.[dex]?.correctAnswer
@@ -73,13 +72,7 @@ function Questions() {
                           quiz?.[dex]?.correctAnswer
                         )}
                     </noscript>
-                    <noscript className=''>
-                      {quiz?.[dex]?.incorrectAnswers.length === 4 &&
-                        quiz?.[dex]?.incorrectAnswers.sort()}
-                    </noscript>
 
-                    {/* {console.log(quiz?.[dex]?.correctAnswer)}
-                    {console.log(quiz?.[dex]?.incorrectAnswers)} */}
                     <div className='flex '>
                       <span className='mr-3 font-bold text-center   text-2xl mb-4'>
                         {dex + 1 + '.'}
@@ -88,25 +81,22 @@ function Questions() {
                         {quiz?.[dex]?.question}
                       </h1>
                     </div>
-                    <div className='max-w-sm ml-10 '>
+                    <fieldset className='max-w-sm ml-10 '>
                       <ul className=' items-center  ml-9'>
-                        {/* <li className=''>
-                        <label htmlFor=''>
-                          <input name={quiz?.[dex]?.id} id='' type='radio' />
-                          <span className='font-medium text-center ml-4 capitalize text-lg'>
-                            {quiz?.[dex]?.correctAnswer}
-                          </span>
-                        </label>
-                      </li> */}
                         {quiz?.[dex]?.incorrectAnswers.map((item, index) => {
                           return (
                             <li key={index}>
-                              <label htmlFor=''>
-                                <input
-                                  name={quiz?.[dex]?.id}
-                                  id=''
-                                  type='radio'
-                                />
+                              <input
+                                name={`group${dex + 1}`}
+                                // name={quiz?.[dex]?.id}
+                                id={`group${dex + 1}${index}`}
+                                type='radio'
+                                value={item}
+
+                                // checked={checked}
+                              />
+
+                              <label htmlFor={`group${dex + 1}${index}`}>
                                 <span className='font-medium text-center ml-4 capitalize text-lg'>
                                   {item}
                                 </span>
@@ -114,9 +104,9 @@ function Questions() {
                             </li>
                           )
                         })}
-                        {console.log(quiz?.[dex]?.correctAnswer)}
+                        {/* {console.log(quiz?.[dex]?.correctAnswer)} */}
                       </ul>
-                    </div>
+                    </fieldset>
                     <div className='flex xxsm:w-screen  justify-around   sm:w-full  mt-10'>
                       <button
                         type='button'
@@ -133,7 +123,7 @@ function Questions() {
                         Next
                       </button>
                     </div>
-                  </fieldset>
+                  </div>
                 ) : (
                   <div>
                     <h1 className='uppercase font-bold text-thirSix  text-center'>
@@ -156,7 +146,6 @@ function Questions() {
               </div>
             </form>
           )}
-          {/* {console.log(quiz?.[dex]?.id)} */}
         </div>
       )}
     </div>
