@@ -6,6 +6,7 @@ function Questions() {
   const [ready, setReady] = useState(false)
   const [dex, setDex] = useState(0)
   const [error, setError] = useState('')
+  const [cama, setCama] = useState([])
   // const [checked, setChecked] = useState(false)
 
   const getQuestions = () => {
@@ -29,10 +30,14 @@ function Questions() {
     e.preventDefault()
   }
 
+  const onChangeValue = (e) => {
+    setCama(e.target.value)
+    console.log(e.target.value)
+  }
   return (
-    <div className=' h-screen  max-w-xl mx-auto '>
+    <div className=' h-screen  max-w-xl mx-auto'>
       {!ready && (
-        <div className=' flex flex-col items-center justify-center h-full'>
+        <div className=' flex flex-col  items-center pt-32 h-full'>
           <h1 className='uppercase font-bold   text-thirSix  text-center'>
             Ready to take the test?
           </h1>
@@ -54,7 +59,7 @@ function Questions() {
           ) : (
             <form
               action=''
-              className='flex flex-col h-full items-center justify-center '
+              className='flex flex-col h-full items-center pt-32 '
               onSubmit={submitForm}
             >
               <div className=' w-full'>
@@ -92,6 +97,8 @@ function Questions() {
                                 id={`group${dex + 1}${index}`}
                                 type='radio'
                                 value={item}
+                                checked={cama === item}
+                                onChange={onChangeValue}
 
                                 // checked={checked}
                               />
