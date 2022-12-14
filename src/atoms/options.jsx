@@ -14,10 +14,7 @@ function Options({ quiz, dex, setName, setSelect, names, setArr }) {
                 setName(e.target.name)
                 names = e.target.name
                 quiz[dex].regions[dex] = e.target.value
-                // console.log({
-                //   ans: quiz[dex].regions[dex],
-                //   name: names,
-                // })
+
                 setArr((prev) => [
                   ...prev,
                   (prev[dex] = {
@@ -27,8 +24,6 @@ function Options({ quiz, dex, setName, setSelect, names, setArr }) {
                 ])
               }}
             >
-              {/* <Rinput index={index} item={item} dex={dex} />
-              <Rlabel dex={dex} index={index} item={item} /> */}
               <input
                 name={`group${dex + 1}`}
                 id={`group${dex + 1}${index}`}
@@ -47,7 +42,6 @@ function Options({ quiz, dex, setName, setSelect, names, setArr }) {
             </li>
           )
         })}
-        {/* {console.log(quiz?.[dex]?.correctAnswer)} */}
       </ul>
     </div>
   )
