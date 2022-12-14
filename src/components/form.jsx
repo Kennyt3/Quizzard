@@ -1,7 +1,17 @@
 import FormD1 from '../atoms/formD1'
 import FormD2 from '../atoms/formD2'
 
-function Form({ submitForm, quiz, dex, getNextQuestion, getPrevQuestion }) {
+function Form({
+  submitForm,
+  quiz,
+  dex,
+  getNextQuestion,
+  getPrevQuestion,
+  setName,
+  setSelect,
+  names,
+  setArr,
+}) {
   return (
     <form
       action=''
@@ -14,6 +24,10 @@ function Form({ submitForm, quiz, dex, getNextQuestion, getPrevQuestion }) {
             <FormD1
               quiz={quiz}
               dex={dex}
+              setName={setName}
+              setSelect={setSelect}
+              setArr={setArr}
+              names={names}
               getNextQuestion={getNextQuestion}
               getPrevQuestion={getPrevQuestion}
             />

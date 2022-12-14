@@ -3,7 +3,17 @@ import Options from '../atoms/options'
 import PrevBtn from '../atoms/prevBtn'
 import NextBtn from '../atoms/nextBtn'
 
-function FormD1({ quiz, dex, getNextQuestion, getPrevQuestion }) {
+function FormD1({
+  arr,
+  quiz,
+  dex,
+  getNextQuestion,
+  getPrevQuestion,
+  setName,
+  setSelect,
+  names,
+  setArr,
+}) {
   return (
     <div>
       <noscript className=''>
@@ -18,7 +28,15 @@ function FormD1({ quiz, dex, getNextQuestion, getPrevQuestion }) {
         <Question quiz={quiz} dex={dex} />
       </div>
       <fieldset className='max-w-sm ml-10 '>
-        <Options quiz={quiz} dex={dex} />
+        <Options
+          quiz={quiz}
+          dex={dex}
+          arr={arr}
+          setName={setName}
+          setSelect={setSelect}
+          setArr={setArr}
+          names={names}
+        />
       </fieldset>
       <div className='flex xxsm:w-screen  justify-around   sm:w-full  mt-10'>
         <PrevBtn getPrevQuestion={getPrevQuestion} />

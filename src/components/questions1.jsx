@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Questions() {
   const [quiz, setQuiz] = useState([])
-
   const [ready, setReady] = useState(false)
   const [dex, setDex] = useState(0)
   const [error, setError] = useState('')
+  const [name, setName] = useState('')
+  const [arr, setArr] = useState([])
+  const [select, setSelect] = useState('')
+  const newArr = ['', '', '', '', '', '', '']
+  let names = ''
+  // const newArr = []
 
   // const [checked, setChecked] = useState(false)
 
@@ -16,6 +21,13 @@ function Questions() {
       .then((data) => setQuiz(data))
       .catch((error) => setError(error))
   }
+
+  useEffect(() => {
+    // !quiz?.[dex]?.incorrectAnswers.includes(quiz?.[dex]?.correctAnswer) &&
+    // quiz?.[dex]?.incorrectAnswers.push(quiz?.[dex]?.correctAnswer)
+    // quiz?.[dex]?.incorrectAnswers.length === 4 &&
+    //   quiz?.[dex]?.incorrectAnswers.sort()
+  }, [quiz, dex])
 
   const getNextQuestion = () => {
     setDex((dex) => dex + 1)
@@ -30,6 +42,11 @@ function Questions() {
     e.preventDefault()
   }
 
+  // const innnn = (prev) => {
+  //   let selected = prev.arr.filter(
+  //     (item) => item.arr === quiz[dex].regions[dex]
+  //   )
+  // }
   return (
     <div className=' h-screen  max-w-xl mx-auto'>
       {!ready && (
@@ -50,7 +67,7 @@ function Questions() {
           {quiz.length < 1 ? (
             <div>
               loading...
-              <h1>{error}</h1>
+              <>{console.log(error)}</>
             </div>
           ) : (
             <form
@@ -85,15 +102,35 @@ function Questions() {
                       <ul className=' items-center  ml-9 '>
                         {quiz?.[dex]?.incorrectAnswers.map((item, index) => {
                           return (
-                            <li key={index}>
+                            <li
+                              key={index}
+                              onChange={(e) => {
+                                setSelect(e.target.value)
+                                setName(e.target.name)
+                                names = e.target.name
+                                quiz[dex].regions[dex] = e.target.value
+                                console.log({
+                                  ans: quiz[dex].regions[dex],
+                                  name: names,
+                                })
+                                setArr((prev) => [
+                                  ...prev,
+                                  (prev[dex] = {
+                                    ans: quiz[dex].regions[dex],
+                                    name: names,
+                                  }),
+                                ])
+                              }}
+                            >
                               <input
                                 name={`group${dex + 1}`}
-                                // name={quiz?.[dex]?.id}
                                 id={`group${dex + 1}${index}`}
                                 type='radio'
                                 value={item}
-
-                                // checked={checked}
+                                onChange={(e) => {
+                                  setName(e.target.name)
+                                }}
+                                checked={quiz[dex].regions[dex] === item}
                               />
 
                               <label htmlFor={`group${dex + 1}${index}`}>
@@ -104,7 +141,6 @@ function Questions() {
                             </li>
                           )
                         })}
-                        {/* {console.log(quiz?.[dex]?.correctAnswer)} */}
                       </ul>
                     </fieldset>
                     <div className='flex xxsm:w-screen  justify-around   sm:w-full  mt-10'>

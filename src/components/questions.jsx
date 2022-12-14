@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Form from './form'
 import Ready from '../atoms/ready'
@@ -7,17 +8,38 @@ function Questions() {
   const [quiz, setQuiz] = useState([])
   const [ready, setReady] = useState(false)
   const [dex, setDex] = useState(0)
+  const navigate = useNavigate()
   const [error, setError] = useState('')
-
-  // const [checked, setChecked] = useState(false)
+  const [name, setName] = useState('')
+  const [arr, setArr] = useState([])
+  const [select, setSelect] = useState('')
+  const newArr = ['', '', '', '', '', '', '']
+  let names = ''
+  console.log(name, select, newArr)
 
   const getQuestions = () => {
     setReady(true)
-    fetch('https://the-trivia-api.com/api/questions?limit=20')
+  }
+
+  // const fetcher = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       'https://the-trivia-api.com/api/questions?limit=5'
+  //     )
+  //     const product = await response.json()
+  //     setQuiz(product)
+  //   } catch (error) {
+  //     setError(error)
+  //   }
+  // }
+
+  useEffect(() => {
+    fetch('https://the-trivia-api.com/api/questions?limit=10')
       .then((res) => res.json())
       .then((data) => setQuiz(data))
       .catch((error) => setError(error))
-  }
+    // fetcher()
+  }, [])
 
   const getNextQuestion = () => {
     setDex((dex) => dex + 1)
@@ -28,8 +50,31 @@ function Questions() {
     }
   }
 
+  useEffect(() => {}, [arr])
+
   const submitForm = (e) => {
     e.preventDefault()
+    let final = []
+    let corr = []
+    let wrong = []
+    navigate('/')
+    arr.map((item, index) => {
+      return item?.name === `group${index + 1}` && (final[index] = arr[index])
+    })
+    quiz.map((item, index) => {
+      return item.correctAnswer === final[index]?.ans
+        ? (corr[index] = final[index]?.ans)
+        : (wrong[index] = final[index]?.ans)
+    })
+    // console.log(arr)
+    // console.log(final)
+    // console.log(wrong)
+    // console.log(corr)
+    // console.log(
+    //   quiz.map((item) => {
+    //     return item.correctAnswer
+    //   })
+    // )
   }
 
   return (
@@ -53,6 +98,10 @@ function Questions() {
               dex={dex}
               getNextQuestion={getNextQuestion}
               getPrevQuestion={getPrevQuestion}
+              setName={setName}
+              setSelect={setSelect}
+              setArr={setArr}
+              names={names}
             />
           )}
         </div>
