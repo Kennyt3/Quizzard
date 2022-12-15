@@ -44,7 +44,7 @@ function Questions() {
     let final = []
     let corr = []
     let wrong = []
-    navigate('/')
+    // navigate('/')
     arr.map((item, index) => {
       return item?.name === `group${index + 1}` && (final[index] = arr[index])
     })
