@@ -20,14 +20,14 @@ function FormD1({
     <div>
       <div className='flex '>
         <noscript className=''>
-          {quiz?.[dex]?.incorrectAnswers.length === 4 &&
-            quiz?.[dex]?.incorrectAnswers.sort()}
-        </noscript>
-        <noscript className=''>
           {!quiz?.[dex]?.incorrectAnswers.includes(
             quiz?.[dex]?.correctAnswer
           ) && quiz?.[dex]?.incorrectAnswers.push(quiz?.[dex]?.correctAnswer)}
+          {quiz?.[dex]?.incorrectAnswers.length === 4 &&
+            quiz?.[dex]?.incorrectAnswers.sort()}
         </noscript>
+        {/* <noscript className=''>
+        </noscript> */}
         <Question quiz={quiz} dex={dex} />
       </div>
       <fieldset className='max-w-sm ml-10 '>
