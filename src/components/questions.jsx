@@ -53,15 +53,15 @@ function Questions() {
         ? (corr[index] = final[index]?.ans)
         : (wrong[index] = final[index]?.ans)
     })
-    console.log(arr)
-    console.log(final)
-    console.log(wrong)
-    console.log(corr)
-    console.log(
-      quiz.map((item) => {
-        return item.correctAnswer
-      })
-    )
+    // console.log(arr)
+    // console.log(final)
+    // console.log(wrong)
+    // console.log(corr)
+    // console.log(
+    //   quiz.map((item) => {
+    //     return item.correctAnswer
+    //   })
+    // )
   }
 
   // const innnn = (prev) => {
@@ -101,8 +101,6 @@ function Questions() {
                 {dex < quiz.length ? (
                   <div className='  w-full'>
                     {/* <noscript className=''>
-                      {quiz?.[dex]?.incorrectAnswers.length === 4 &&
-                        quiz?.[dex]?.incorrectAnswers.sort()}
                     </noscript> */}
                     <noscript className=''>
                       {!quiz?.[dex]?.incorrectAnswers.includes(
@@ -111,6 +109,8 @@ function Questions() {
                         quiz?.[dex]?.incorrectAnswers.push(
                           quiz?.[dex]?.correctAnswer
                         )}
+                      {quiz?.[dex]?.incorrectAnswers.length === 4 &&
+                        quiz?.[dex]?.incorrectAnswers.sort()}
                     </noscript>
                     <div className='flex '>
                       <span className='mr-3 font-bold text-center   text-2xl mb-4'>
