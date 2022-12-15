@@ -15,7 +15,7 @@ function Questions() {
   const [select, setSelect] = useState('')
   const newArr = ['', '', '', '', '', '', '']
   let names = ''
-  console.log(name, select, newArr)
+  console.log(name, arr, select, newArr)
 
   const getQuestions = () => {
     setReady(true)

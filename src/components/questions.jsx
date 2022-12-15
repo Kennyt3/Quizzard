@@ -21,6 +21,7 @@ function Questions() {
       .then((data) => setQuiz(data))
       .catch((error) => setError(error))
   }
+  console.log(name, arr, select, newArr)
 
   useEffect(() => {
     // !quiz?.[dex]?.incorrectAnswers.includes(quiz?.[dex]?.correctAnswer) &&
