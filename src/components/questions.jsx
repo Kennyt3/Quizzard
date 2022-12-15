@@ -79,10 +79,10 @@ function Questions() {
               <div className=' w-full'>
                 {dex < quiz.length ? (
                   <div className='  w-full'>
-                    <noscript className=''>
+                    {/* <noscript className=''>
                       {quiz?.[dex]?.incorrectAnswers.length === 4 &&
                         quiz?.[dex]?.incorrectAnswers.sort()}
-                    </noscript>
+                    </noscript> */}
                     <noscript className=''>
                       {!quiz?.[dex]?.incorrectAnswers.includes(
                         quiz?.[dex]?.correctAnswer
