@@ -110,10 +110,10 @@ function Questions() {
                                 setName(e.target.name)
                                 names = e.target.name
                                 quiz[dex].regions[dex] = e.target.value
-                                console.log({
-                                  ans: quiz[dex].regions[dex],
-                                  name: names,
-                                })
+                                // console.log({
+                                //   ans: quiz[dex].regions[dex],
+                                //   name: names,
+                                // })
                                 setArr((prev) => [
                                   ...prev,
                                   (prev[dex] = {
