@@ -41,6 +41,27 @@ function Questions() {
 
   const submitForm = (e) => {
     e.preventDefault()
+    let final = []
+    let corr = []
+    let wrong = []
+    navigate('/')
+    arr.map((item, index) => {
+      return item?.name === `group${index + 1}` && (final[index] = arr[index])
+    })
+    quiz.map((item, index) => {
+      return item.correctAnswer === final[index]?.ans
+        ? (corr[index] = final[index]?.ans)
+        : (wrong[index] = final[index]?.ans)
+    })
+    console.log(arr)
+    console.log(final)
+    console.log(wrong)
+    console.log(corr)
+    console.log(
+      quiz.map((item) => {
+        return item.correctAnswer
+      })
+    )
   }
 
   // const innnn = (prev) => {
