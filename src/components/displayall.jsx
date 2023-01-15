@@ -25,13 +25,21 @@ const Displayall = ({ res, quiz, final }) => {
               <fieldset className='max-w-sm ml-10 '>
                 <Finaloption item={item} final={final} />
               </fieldset>
-              <p className='mt-5 text-center font-bold'>
-                Your answer was: {final[index]?.ans}
-              </p>
+              <div
+                className='text-white my-10 '
+                style={{
+                  background: '#3550DC',
+                  // background: 'linear-gradient(to right, #3550DC, #27E9F7)',
+                }}
+              >
+                <p className='mt-5 text-center font-bold'>
+                  Your answer was: {final[index]?.ans}
+                </p>
 
-              <p className='mt-5 text-center font-bold'>
-                The correct answer is: {item.correctAnswer}
-              </p>
+                <p className='mt-5 text-center font-bold'>
+                  The correct answer is: {item.correctAnswer}
+                </p>
+              </div>
               {console.log(item.correctAnswer, final[index]?.ans)}
               {item.correctAnswer === final[index]?.ans ? (
                 <TiTick className='absolute top-20 right-5' />
