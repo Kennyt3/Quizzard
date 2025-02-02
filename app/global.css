@@ -36,6 +36,14 @@ input:focus {
   }
 }
 
+.maxy {
+  @media (min-width: 900px) {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .menu-list {
   display: flex;
   flex-direction: column;

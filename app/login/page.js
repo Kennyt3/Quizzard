@@ -43,12 +43,14 @@ export default function Posts() {
   }
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen flex flex-col'>
       <Header page='login' />
-      <div className='flex min-h-[80vh] items-center  justify-center bg-gray-50 text-gray-900 '>
+      <div className='flex-1 flex items-center  justify-center bg-gray-50 text-gray-900 '>
         <Card className='w-full max-w-md p-6'>
           <CardContent>
-            <h2 className='text-center text-2xl font-bold'>Login to Blogify</h2>
+            <h2 className='text-center text-2xl font-bold'>
+              Login to Quizzard
+            </h2>
             <p className='mt-2 text-center text-gray-600'>
               Enter your credentials to access your account
             </p>
@@ -81,8 +83,8 @@ export default function Posts() {
             </form>
             <p className='mt-4 text-center text-sm text-gray-600'>
               Don&apos;t have an account?{' '}
-              <a href='/signup' className='text-indigo-600'>
-                Sign up
+              <a href='/register' className='text-indigo-600'>
+                Register
               </a>
             </p>
           </CardContent>

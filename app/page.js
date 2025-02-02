@@ -43,7 +43,7 @@ const QuizApp = () => {
     <div className='flex flex-col  min-h-screen text-center '>
       <Header page='home' />
       <div className='flex flex-1 flex-col items-center justify-center'>
-        <h1 className='text-4xl font-bold mb-4'>Welcome to the Quiz App</h1>
+        <h1 className='text-4xl font-bold mb-4'>Welcome to the Quizzard App</h1>
         <p className='text-lg mb-6'>
           Test your knowledge and receive results instantly!
         </p>
